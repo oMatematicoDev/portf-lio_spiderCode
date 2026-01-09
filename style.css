@@ -1,0 +1,171 @@
+/* ==========================================================================
+   CSS FINAL - PORTFOLIO JAYMALA (SPIDER CODE)
+   ========================================================================== */
+
+/* --- 1. GERAL --- */
+:root {
+    --primary: #2563eb;       
+    --whatsapp-green: #25D366;
+    --bg: #05070a;            
+    --text: #ffffff;          
+    --card-bg: #0a0a0a;       
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+#particles-js { position: fixed; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+/* --- 2. HEADER --- */
+.header-container {
+    position: relative; z-index: 10; display: flex; flex-direction: column;
+    align-items: center; text-align: center; padding: 80px 5% 40px;
+}
+
+.profile-section { display: flex; justify-content: center; width: 100%; margin-bottom: 30px; }
+
+.profile-image {
+    width: 140px; height: 140px; border-radius: 50%;
+    border: 3px solid var(--primary); overflow: hidden;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+.profile-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.main-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); margin: 15px 0; font-weight: 800;
+    background: linear-gradient(to right, #ffffff, #a5c2ff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.subtitle { color: var(--primary); text-transform: uppercase; letter-spacing: 3px; font-weight: 600; }
+
+/* --- 3. PORTFÓLIO & MACBOOK --- */
+.portfolio-grid {
+    position: relative; z-index: 10; display: flex; flex-direction: column;
+    gap: 100px; padding: 60px 2%; max-width: 1400px; margin: 0 auto;
+}
+
+.portfolio-item { text-align: center; width: 100%; }
+.item-title { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+.click-hint { color: var(--primary); margin-bottom: 20px; font-weight: bold; cursor: pointer; }
+
+/* Wrapper do MacBook */
+.mockup-wrapper {
+    position: relative; width: 100%; max-width: 750px;
+    margin: 0 auto; display: flex; justify-content: center;
+}
+
+.macbook-frame {
+    position: relative; width: 90%; max-width: 1000px; z-index: 1; margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.mac-screen {
+    background: #000; border-radius: 15px 15px 0 0; border: 10px solid #1f1f1f;
+    border-bottom: none; overflow: hidden; aspect-ratio: 16/10;
+    position: relative; cursor: pointer;
+    box-shadow: 0 0 60px rgba(37, 99, 235, 0.15);
+}
+.mac-screen:hover { transform: scale(1.02); }
+
+.mac-base {
+    height: 20px; background: #2f2f2f; border-radius: 0 0 12px 12px;
+    width: 100%; position: relative;
+}
+
+/* Garante vídeo cheio */
+.mac-screen video { width: 100%; height: 100%; display: block; object-fit: fill; }
+
+/* --- 4. CONTATO --- */
+.contact-section { position: relative; z-index: 10; padding: 80px 5%; text-align: center; }
+.contact-links { display: flex; justify-content: center; margin-top: 30px; }
+
+.contact-card {
+    text-decoration: none; color: white; padding: 15px 40px; border-radius: 50px;
+    background: rgba(37, 211, 102, 0.1); border: 2px solid var(--whatsapp-green);
+    display: flex; align-items: center; gap: 15px; transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.1);
+}
+.contact-card i { font-size: 2rem; color: var(--whatsapp-green); }
+.contact-info { display: flex; flex-direction: column; align-items: flex-start; }
+.contact-info span { font-weight: 700; font-size: 1.1rem; }
+.contact-info small { color: #ccc; font-size: 0.85rem; }
+
+.contact-card:hover {
+    background: var(--whatsapp-green); transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(37, 211, 102, 0.6);
+}
+.contact-card:hover i, .contact-card:hover span, .contact-card:hover small { color: #000; }
+
+/* --- 5. ANIMAÇÕES --- */
+.reveal { opacity: 0; transform: translateY(40px); transition: 1s; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.typing-cursor { color: var(--primary); animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* --- 6. MODAL DE VÍDEO (GERAL) --- */
+.modal-video-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); z-index: 99999;
+    align-items: center; justify-content: center;
+}
+
+/* >>> AQUI ESTÁ O NOVO BOTÃO DE SAIR ESTILO VIDRO <<< */
+.btn-fechar-video {
+    position: fixed; top: 30px; right: 30px;
+    
+    /* Fundo Transparente com Borda Fina */
+    background: rgba(0, 0, 0, 0.3); /* Leve escurecida para contraste */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Borda branca fina */
+    backdrop-filter: blur(4px); /* Efeito de vidro borrado */
+    color: white;
+    
+    width: 50px; height: 50px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; cursor: pointer; z-index: 100000;
+    transition: all 0.3s ease;
+}
+
+.btn-fechar-video:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    transform: rotate(90deg); /* Uma animaçãozinha ao passar o mouse */
+}
+
+.modal-video-content {
+    position: relative; width: 90%; max-width: 1000px;
+    display: flex; justify-content: center; align-items: center;
+}
+.modal-video-content video {
+    width: 100%; height: auto; border-radius: 8px;
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.5); max-height: 90vh;
+}
+
+/* --- 7. MOBILE E ROTAÇÃO (TELA CHEIA DEITADA) --- */
+@media (max-width: 850px) {
+    .macbook-frame { width: 100%; }
+    .mockup-wrapper { width: 100%; padding: 0 10px; }
+    
+    /* O vídeo gira, mas o botão FECHAR fica no lugar certo */
+    .modal-video-content {
+        width: 100vw !important; height: 100vh !important;
+        max-width: none !important; position: absolute;
+    }
+    
+    .modal-video-content video {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        width: 100vh !important; height: 100vw !important;
+        object-fit: contain; border-radius: 0;
+    }
+    
+    /* Ajuste fino do botão no celular */
+    .btn-fechar-video { top: 20px; right: 20px; width: 45px; height: 45px; font-size: 20px; }
+}
