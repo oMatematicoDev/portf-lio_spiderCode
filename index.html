@@ -1,113 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio profissional de Jaymala - Desenvolvedor Web especializado em sites e sistemas">
     <title>Portfolio | Jaymala - Spider Code</title>
+    
+    <!-- Favicon -->
     <link rel="shortcut icon" href="ico/computador.ico" type="image/x-icon">
     
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
+    <!-- Background Animation -->
+    <div id="particles-js"></div>
 
-    <div id="particles-js"></div> 
-
+    <!-- Header Section -->
     <header class="header-container">
         <div class="profile-section reveal">
             <div class="profile-image">
-                <img src="imagens/perfil.png" alt="Foto de Perfil">
+                <img src="imagens/perfil.png" alt="Foto de Perfil - Jaymala">
             </div>
         </div>
 
         <div class="main-content">
             <h1 class="reveal">
-                <span id="typed-text">Jaymala</span><span class="typing-cursor">|</span>
+                <span id="typed-text">Jaymala</span>
+                <span class="typing-cursor">|</span>
             </h1>
             <p class="subtitle reveal">Transformando ideias em experiências digitais.</p>
         </div>
     </header>
 
+    <!-- Portfolio Grid -->
     <main class="portfolio-grid">
-        
-        <div class="portfolio-item reveal">
+        <!-- Portfolio Item 1 -->
+        <article class="portfolio-item reveal">
             <h3 class="item-title">Site Profissional - Farmácia</h3>
-            <p class="click-hint"><i class="fas fa-hand-pointer"></i> Clique na tela para ampliar</p>
+            <p class="click-hint">
+                <i class="fas fa-hand-pointer"></i> 
+                Clique na tela para ampliar
+            </p>
             
             <div class="mockup-wrapper">
                 <div class="macbook-frame">
                     <div class="mac-screen" onclick="abrirVideo('videos/video1.mp4')">
                         <video autoplay loop muted playsinline>
                             <source src="videos/video1.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos HTML5.
                         </video>
                     </div>
                     <div class="mac-base"></div>
                 </div>
             </div>
-        </div>
+        </article>
 
-        <div class="portfolio-item reveal">
+        <!-- Portfolio Item 2 -->
+        <article class="portfolio-item reveal">
             <h3 class="item-title">Site Profissional – Advocacia</h3>
-            <p class="click-hint"><i class="fas fa-hand-pointer"></i> Clique na tela para ampliar</p>
+            <p class="click-hint">
+                <i class="fas fa-hand-pointer"></i> 
+                Clique na tela para ampliar
+            </p>
 
             <div class="mockup-wrapper">
                 <div class="macbook-frame">
                     <div class="mac-screen" onclick="abrirVideo('videos/video2.mp4')">
                         <video autoplay loop muted playsinline>
                             <source src="videos/video2.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos HTML5.
                         </video>
                     </div>
                     <div class="mac-base"></div>
                 </div>
             </div>
-        </div>
+        </article>
 
-        <div class="portfolio-item reveal">
+        <!-- Portfolio Item 3 -->
+        <article class="portfolio-item reveal">
             <h3 class="item-title">Painel de Sistema – Jurídico</h3>
-            <p class="click-hint"><i class="fas fa-hand-pointer"></i> Clique na tela para ampliar</p>
+            <p class="click-hint">
+                <i class="fas fa-hand-pointer"></i> 
+                Clique na tela para ampliar
+            </p>
 
-           <div class="mockup-wrapper">
+            <div class="mockup-wrapper">
                 <div class="macbook-frame">
                     <div class="mac-screen" onclick="abrirVideo('videos/video3.mp4')">
                         <video autoplay loop muted playsinline>
                             <source src="videos/video3.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos HTML5.
                         </video>
                     </div>
                     <div class="mac-base"></div>
                 </div>
             </div>
-        </div>
-
+        </article>
     </main>
 
+    <!-- Contact Section -->
     <section class="contact-section reveal">
         <h2>Fale Comigo</h2>
         <div class="contact-links">
-            <a href="https://wa.me/5594991483939?text=Ol%C3%A1%2C%20vi%20seu%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" class="contact-card">
-    <i class="fab fa-whatsapp"></i>
-    <div class="contact-info">
-        <span>WhatsApp</span>
-        <small>Orçamento rápido</small>
-    </div>
-</a>
+            <a href="https://wa.me/5594991483939?text=Ol%C3%A1%2C%20vi%20seu%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="contact-card"
+               aria-label="Entrar em contato via WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+                <div class="contact-info">
+                    <span>WhatsApp</span>
+                    <small>Orçamento rápido</small>
+                </div>
+            </a>
         </div>
     </section>
 
+    <!-- Video Modal -->
     <div id="videoModal" class="modal-video-overlay" onclick="fecharVideo()">
-        
-        <div class="btn-fechar-video" onclick="fecharVideo()">
+        <button class="btn-fechar-video" onclick="fecharVideo()" aria-label="Fechar vídeo">
             <i class="fas fa-times"></i>
-        </div>
+        </button>
 
         <div class="modal-video-content" onclick="event.stopPropagation()">
             <video id="playerPrincipal" controls playsinline>
                 <source src="" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeos.
             </video>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
