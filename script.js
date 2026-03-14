@@ -4,7 +4,7 @@
    =======================================================
 */
 
-// 1. Configuração das Partículas (Fundo animado)
+// 1. Configuração das Partículas
 if (document.getElementById('particles-js')) {
     particlesJS('particles-js', {
         "particles": {
@@ -18,17 +18,25 @@ if (document.getElementById('particles-js')) {
     });
 }
 
-// 2. Efeito de Digitação (Nome e Títulos)
+// 2. Efeito de Digitação
 const typedTextElement = document.getElementById('typed-text');
-const phrases = ["Programador Full Stack", "Especialista em UI/UX", "Soluções Digitais"];
+
+const translations = {
+    pt: ["Programador Full Stack", "Especialista em UI/UX", "Soluções Digitais"],
+    en: ["Full Stack Developer",   "UI/UX Specialist",     "Digital Solutions"]
+};
+
+let phrases = translations['pt'];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
+let typingTimeout = null;
 
 function type() {
-    if (!typedTextElement) return; 
-    
+    if (!typedTextElement) return;
+
     const currentPhrase = phrases[phraseIndex];
+
     if (isDeleting) {
         typedTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
         charIndex--;
@@ -38,18 +46,31 @@ function type() {
     }
 
     let typeSpeed = isDeleting ? 50 : 100;
+
     if (!isDeleting && charIndex === currentPhrase.length) {
         isDeleting = true;
-        typeSpeed = 2500; // Tempo de espera antes de apagar
+        typeSpeed = 2500;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
         typeSpeed = 500;
     }
-    setTimeout(type, typeSpeed);
+
+    typingTimeout = setTimeout(type, typeSpeed);
 }
 
-// 3. Scroll Reveal (Animação ao rolar a página)
+// Chamada pelo botão de idioma no index.html
+function updateTypingLang(lang) {
+    if (typingTimeout) clearTimeout(typingTimeout);
+    phrases = translations[lang];
+    phraseIndex = 0;
+    charIndex = 0;
+    isDeleting = false;
+    if (typedTextElement) typedTextElement.textContent = '';
+    type();
+}
+
+// 3. Scroll Reveal
 function reveal() {
     const reveals = document.querySelectorAll(".reveal");
     reveals.forEach(el => {
@@ -59,38 +80,29 @@ function reveal() {
     });
 }
 
-// =======================================================
-// 4. LÓGICA DO MODAL DE VÍDEO (AQUI É A CORREÇÃO)
-// =======================================================
-
+// 4. Modal de Vídeo
 function abrirVideo(caminhoDoVideo) {
-    // Pega os elementos do modal e do player
     const modal = document.getElementById('videoModal');
     const player = document.getElementById('playerPrincipal');
-
-    // Verifica se o caminho foi passado
     if (caminhoDoVideo) {
-        player.src = caminhoDoVideo; // Carrega o vídeo novo
-        modal.style.display = 'flex'; // Mostra a tela preta
-        player.play(); // Começa a tocar
-    } else {
-        console.error("Erro: Caminho do vídeo não encontrado.");
+        player.src = caminhoDoVideo;
+        modal.style.display = 'flex';
+        player.play();
     }
 }
 
 function fecharVideo() {
     const modal = document.getElementById('videoModal');
     const player = document.getElementById('playerPrincipal');
-
-    player.pause();         // Pausa o vídeo
-    player.currentTime = 0; // Volta para o início
-    player.src = "";        // Limpa a memória
-    modal.style.display = 'none'; // Esconde a tela
+    player.pause();
+    player.currentTime = 0;
+    player.src = "";
+    modal.style.display = 'none';
 }
 
-// 5. Inicialização Geral
+// 5. Inicialização
 window.addEventListener("scroll", reveal);
-window.onload = () => { 
-    type(); 
-    reveal(); 
+window.onload = () => {
+    type();
+    reveal();
 };

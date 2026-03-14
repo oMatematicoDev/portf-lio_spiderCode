@@ -6,53 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio profissional de Jaymala - Desenvolvedor Web especializado em sites e sistemas">
     <title>Portfolio | Jaymala - Spider Code</title>
-    
-    <!-- Favicon -->
+
     <link rel="shortcut icon" href="ico/computador.ico" type="image/x-icon">
-    
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        [data-pt], [data-en] { transition: opacity 0.25s ease; }
+        .lang-fade-out { opacity: 0 !important; }
+    </style>
 </head>
 
 <body>
+
+    <!-- SELETOR DE IDIOMA — estilos 100% inline para evitar conflitos -->
+    <div style="position:fixed;top:20px;right:20px;z-index:100001;display:flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:5px 8px;box-shadow:0 4px 20px rgba(0,0,0,0.4);">
+
+        <button id="btn-pt" onclick="setLang('pt')"
+            style="all:unset;display:inline-flex;align-items:center;gap:5px;cursor:pointer;padding:5px 11px;border-radius:40px;background:rgba(255,255,255,0.16);">
+            <span style="font-size:17px;-webkit-text-fill-color:initial;">🇧🇷</span>
+            <span id="label-pt" style="-webkit-text-fill-color:#fff;color:#fff;font-family:Inter,sans-serif;font-size:12px;font-weight:600;">PT</span>
+        </button>
+
+        <div style="width:1px;height:16px;background:rgba(255,255,255,0.2);flex-shrink:0;"></div>
+
+        <button id="btn-en" onclick="setLang('en')"
+            style="all:unset;display:inline-flex;align-items:center;gap:5px;cursor:pointer;padding:5px 11px;border-radius:40px;background:transparent;">
+            <span style="font-size:17px;-webkit-text-fill-color:initial;">🇺🇸</span>
+            <span id="label-en" style="-webkit-text-fill-color:rgba(255,255,255,0.45);color:rgba(255,255,255,0.45);font-family:Inter,sans-serif;font-size:12px;font-weight:600;">EN</span>
+        </button>
+
+    </div>
+
     <!-- Background Animation -->
     <div id="particles-js"></div>
 
-    <!-- Header Section -->
+    <!-- Header -->
     <header class="header-container">
         <div class="profile-section reveal">
             <div class="profile-image">
-                <img src="imagens/perfil.png" alt="Foto de Perfil - Jaymala">
+                <img src="imagens/perfilfreelas.jpeg" alt="Foto de Perfil - Jaymala">
             </div>
         </div>
-
         <div class="main-content">
             <h1 class="reveal">
-                <span id="typed-text">Jaymala</span>
+                <span id="typed-text"></span>
                 <span class="typing-cursor">|</span>
             </h1>
-            <p class="subtitle reveal">Transformando ideias em experiências digitais.</p>
+            <p class="subtitle reveal"
+               data-pt="Transformando ideias em experiências digitais."
+               data-en="Turning ideas into digital experiences.">
+                Transformando ideias em experiências digitais.
+            </p>
         </div>
     </header>
 
     <!-- Portfolio Grid -->
     <main class="portfolio-grid">
-        <!-- Portfolio Item 1 -->
+
         <article class="portfolio-item reveal">
-            <h3 class="item-title">Site Profissional - Farmácia</h3>
-            <p class="click-hint">
-                <i class="fas fa-hand-pointer"></i> 
-                Clique na tela para ampliar
+            <h3 class="item-title"
+                data-pt="Site Profissional - Farmácia"
+                data-en="Professional Website – Pharmacy">
+                Site Profissional - Farmácia
+            </h3>
+            <p class="click-hint"
+               data-pt='<i class="fas fa-hand-pointer"></i> Clique na tela para ampliar'
+               data-en='<i class="fas fa-hand-pointer"></i> Click the screen to enlarge'>
+                <i class="fas fa-hand-pointer"></i> Clique na tela para ampliar
             </p>
-            
             <div class="mockup-wrapper">
                 <div class="macbook-frame">
                     <div class="mac-screen" onclick="abrirVideo('videos/video1.mp4')">
                         <video autoplay loop muted playsinline>
                             <source src="videos/video1.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos HTML5.
                         </video>
                     </div>
                     <div class="mac-base"></div>
@@ -60,20 +88,22 @@
             </div>
         </article>
 
-        <!-- Portfolio Item 2 -->
         <article class="portfolio-item reveal">
-            <h3 class="item-title">Site Profissional – Advocacia</h3>
-            <p class="click-hint">
-                <i class="fas fa-hand-pointer"></i> 
-                Clique na tela para ampliar
+            <h3 class="item-title"
+                data-pt="Site Profissional – Advocacia"
+                data-en="Professional Website – Law Firm">
+                Site Profissional – Advocacia
+            </h3>
+            <p class="click-hint"
+               data-pt='<i class="fas fa-hand-pointer"></i> Clique na tela para ampliar'
+               data-en='<i class="fas fa-hand-pointer"></i> Click the screen to enlarge'>
+                <i class="fas fa-hand-pointer"></i> Clique na tela para ampliar
             </p>
-
             <div class="mockup-wrapper">
                 <div class="macbook-frame">
                     <div class="mac-screen" onclick="abrirVideo('videos/video2.mp4')">
                         <video autoplay loop muted playsinline>
                             <source src="videos/video2.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos HTML5.
                         </video>
                     </div>
                     <div class="mac-base"></div>
@@ -81,63 +111,110 @@
             </div>
         </article>
 
-        <!-- Portfolio Item 3 -->
         <article class="portfolio-item reveal">
-            <h3 class="item-title">Painel de Sistema – Jurídico</h3>
-            <p class="click-hint">
-                <i class="fas fa-hand-pointer"></i> 
-                Clique na tela para ampliar
+            <h3 class="item-title"
+                data-pt="Painel de Sistema – Jurídico"
+                data-en="System Dashboard – Legal">
+                Painel de Sistema – Jurídico
+            </h3>
+            <p class="click-hint"
+               data-pt='<i class="fas fa-hand-pointer"></i> Clique na tela para ampliar'
+               data-en='<i class="fas fa-hand-pointer"></i> Click the screen to enlarge'>
+                <i class="fas fa-hand-pointer"></i> Clique na tela para ampliar
             </p>
-
             <div class="mockup-wrapper">
                 <div class="macbook-frame">
                     <div class="mac-screen" onclick="abrirVideo('videos/video3.mp4')">
                         <video autoplay loop muted playsinline>
                             <source src="videos/video3.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos HTML5.
                         </video>
                     </div>
                     <div class="mac-base"></div>
                 </div>
             </div>
         </article>
+
     </main>
 
-    <!-- Contact Section -->
+    <!-- Contato -->
     <section class="contact-section reveal">
-        <h2>Fale Comigo</h2>
+        <h2 data-pt="Fale Comigo" data-en="Get in Touch">Fale Comigo</h2>
         <div class="contact-links">
-            <a href="https://wa.me/5594991483939?text=Ol%C3%A1%2C%20vi%20seu%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="contact-card"
-               aria-label="Entrar em contato via WhatsApp">
+            <a href="https://wa.me/5594991483939?text=Ol%C3%A1%2C%20vi%20seu%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
+               target="_blank" rel="noopener noreferrer"
+               class="contact-card" aria-label="Entrar em contato via WhatsApp">
                 <i class="fab fa-whatsapp"></i>
                 <div class="contact-info">
                     <span>WhatsApp</span>
-                    <small>Orçamento rápido</small>
+                    <small data-pt="Orçamento rápido" data-en="Quick quote">Orçamento rápido</small>
                 </div>
             </a>
         </div>
     </section>
 
-    <!-- Video Modal -->
+    <!-- Modal de Vídeo -->
     <div id="videoModal" class="modal-video-overlay" onclick="fecharVideo()">
         <button class="btn-fechar-video" onclick="fecharVideo()" aria-label="Fechar vídeo">
             <i class="fas fa-times"></i>
         </button>
-
         <div class="modal-video-content" onclick="event.stopPropagation()">
             <video id="playerPrincipal" controls playsinline>
                 <source src="" type="video/mp4">
-                Seu navegador não suporta a reprodução de vídeos.
             </video>
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
-</body>
 
+    <script>
+        // currentLang declarado APENAS aqui, não no script.js
+        let currentLang = 'pt';
+
+        function setLang(lang) {
+            if (lang === currentLang) return;
+            currentLang = lang;
+
+            // Atualiza visual dos botões
+            const btnPt = document.getElementById('btn-pt');
+            const btnEn = document.getElementById('btn-en');
+            const labelPt = document.getElementById('label-pt');
+            const labelEn = document.getElementById('label-en');
+
+            if (lang === 'pt') {
+                btnPt.style.background = 'rgba(255,255,255,0.16)';
+                labelPt.style.webkitTextFillColor = '#fff';
+                labelPt.style.color = '#fff';
+                btnEn.style.background = 'transparent';
+                labelEn.style.webkitTextFillColor = 'rgba(255,255,255,0.45)';
+                labelEn.style.color = 'rgba(255,255,255,0.45)';
+            } else {
+                btnEn.style.background = 'rgba(255,255,255,0.16)';
+                labelEn.style.webkitTextFillColor = '#fff';
+                labelEn.style.color = '#fff';
+                btnPt.style.background = 'transparent';
+                labelPt.style.webkitTextFillColor = 'rgba(255,255,255,0.45)';
+                labelPt.style.color = 'rgba(255,255,255,0.45)';
+            }
+
+            // Atualiza lang do html
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+            // Reinicia animação de digitação (função definida no script.js)
+            updateTypingLang(lang);
+
+            // Troca textos estáticos com fade
+            const elements = document.querySelectorAll('[data-pt][data-en]');
+            elements.forEach(el => el.classList.add('lang-fade-out'));
+            setTimeout(() => {
+                elements.forEach(el => {
+                    const text = el.getAttribute('data-' + lang);
+                    if (text !== null) el.innerHTML = text;
+                    el.classList.remove('lang-fade-out');
+                });
+            }, 250);
+        }
+    </script>
+
+</body>
 </html>
